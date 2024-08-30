@@ -344,11 +344,13 @@ Object.keys(subjectsWithSubtopics).forEach(subject => {
 });
 
 
+
+
 export default function Home() {
   const [subject, setSubject] = useState("");
   const [subtopic, setSubtopic] = useState("");
   const [difficulty, setDifficulty] = useState("Easy"); // New state for difficulty
-  const [problem, setProblem] = useState(null);
+  const [problem, setProblem] = useState("");
   const [choices, setChoices] = useState([]);
   const [selectedChoice, setSelectedChoice] = useState(null);
   const [correctChoice, setCorrectChoice] = useState(null);
