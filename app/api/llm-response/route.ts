@@ -1,10 +1,10 @@
 import { createOpenAI } from "@ai-sdk/openai";
 import { HfInference } from '@huggingface/inference';
 import { convertToCoreMessages, generateText, streamText } from "ai";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
 import { GoogleGenerativeAI  } from "@google/generative-ai";
 
-dotenv.config();
+// dotenv.config();
 
 export async function POST(req: Request) {
   // Parse the request body
