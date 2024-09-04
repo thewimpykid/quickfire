@@ -9,6 +9,9 @@ import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-w
 
 // Define subjects and subtopics
 const subjectsWithSubtopics = {
+  "Multiplication": [
+    "Tables of 1-11"
+  ],
   "SAT Math": [
     "Algebra",
     "Problem Solving and Data Analysis",
@@ -473,110 +476,110 @@ export default function Home() {
 
   return (
     <div className="bg-black">
-    <main className="w-full flex min-h-screen flex-col items-center justify-center p-6 text-orange-400">
-      <h1 className="text-sm md:text-base text-white bg-opacity-50 bg-black p-4 mb-4 md:mb-8 opacity-40 z-40 text-center">
-        This app is in beta, report issues to <span className="font-bold">reemletap0@gmail.com</span> / Created by <span className="font-bold">Meer Patel</span>
-      </h1>
-      <h1 className="text-4xl md:text-8xl font-bold text-gray-700 bg-opacity-50 mb-8 md:mb-12 z-40">
-        quickfire
-      </h1>
+      <main className="w-full flex min-h-screen flex-col items-center justify-center p-6 text-orange-400">
+        <h1 className="text-xs sm:text-sm md:text-base text-white bg-opacity-50 bg-black p-4 mb-4 md:mb-8 opacity-40 z-40 text-center">
+          This app is in beta, report issues to <span className="font-bold">meer.r.patel@gmail.com</span> / Created by <span className="font-bold">Meer Patel</span>
+        </h1>
+        <h1 className="text-3xl sm:text-5xl md:text-8xl font-bold text-gray-700 bg-opacity-50 mb-6 sm:mb-8 md:mb-12 z-40">
+          quickfire
+        </h1>
   
-      <div className="w-full flex flex-wrap justify-center gap-4 mb-4 z-40">
-        <select
-          value={subject}
-          onChange={handleSubjectChange}
-          className="bg-gray-800 text-white outline-none w-full md:w-60 px-4 py-2 h-12 rounded-sm hover:bg-gray-700 transition-colors"
-        >
-          <option value="" disabled>Choose a Subject</option>
-          {Object.keys(subjectsWithSubtopics).map((sub, index) => (
-            <option key={index} value={sub}>{sub}</option>
-          ))}
-        </select>
-        {subject && (
+        <div className="w-full flex flex-wrap justify-center gap-4 mb-4 z-40">
           <select
-            value={subtopic}
-            onChange={(e) => setSubtopic(e.target.value)}
-            className="bg-gray-800 text-white outline-none w-full md:w-60 px-4 py-2 h-12 rounded-sm hover:bg-gray-700 transition-colors mb-2"
+            value={subject}
+            onChange={handleSubjectChange}
+            className="bg-gray-800 text-white outline-none w-full sm:w-48 md:w-60 px-4 py-2 h-12 rounded-sm hover:bg-gray-700 transition-colors"
           >
-            <option value="" disabled>Choose a Unit</option>
-            {subjectsWithSubtopics[subject].map((subtopic, index) => (
-              <option key={index} value={subtopic}>{subtopic}</option>
+            <option value="" disabled>Choose a Subject</option>
+            {Object.keys(subjectsWithSubtopics).map((sub, index) => (
+              <option key={index} value={sub}>{sub}</option>
             ))}
           </select>
-        )}
-        <select
-          value={difficulty}
-          onChange={(e) => setDifficulty(e.target.value)}
-          className="bg-gray-800 text-white outline-none w-full md:w-40 px-4 py-2 h-12 rounded-sm hover:bg-gray-700 transition-colors"
-        >
-          <option value="Easy">Easy</option>
-          <option value="Medium">Medium</option>
-          <option value="Hard">Hard</option>
-        </select>
-      </div>
-  
-      <div className="flex justify-center items-center flex-wrap">
-        <div className="flex flex-col md:flex-row items-center mb-4">
-          <button
-            onClick={generateProblem}
-            className="w-full md:w-60 bg-cyan-600 text-white py-2 rounded-lg hover:bg-cyan-500 transition-colors mt-4 md:mr-6 h-12"
+          {subject && (
+            <select
+              value={subtopic}
+              onChange={(e) => setSubtopic(e.target.value)}
+              className="bg-gray-800 text-white outline-none w-full sm:w-48 md:w-60 px-4 py-2 h-12 rounded-sm hover:bg-gray-700 transition-colors"
+            >
+              <option value="" disabled>Choose a Unit</option>
+              {subjectsWithSubtopics[subject].map((subtopic, index) => (
+                <option key={index} value={subtopic}>{subtopic}</option>
+              ))}
+            </select>
+          )}
+          <select
+            value={difficulty}
+            onChange={(e) => setDifficulty(e.target.value)}
+            className="bg-gray-800 text-white outline-none w-full sm:w-32 md:w-40 px-4 py-2 h-12 rounded-sm hover:bg-gray-700 transition-colors"
           >
-            Generate Problem
-          </button>
-          <div className="flex justify-center items-center mt-4 md:mt-0">
-            <p className="text-white text-3xl md:text-4xl">🔥{streak}</p>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+  
+        <div className="flex justify-center items-center flex-wrap">
+          <div className="flex flex-col md:flex-row items-center mb-4">
+            <button
+              onClick={generateProblem}
+              className="w-full md:w-60 bg-cyan-600 text-white py-2 rounded-lg hover:bg-cyan-500 transition-colors mt-4 md:mr-6 h-12"
+            >
+              Generate Problem
+            </button>
+            <div className="flex justify-center items-center mt-4 md:mt-0">
+              <p className="text-white text-2xl sm:text-3xl md:text-4xl">🔥{streak}</p>
+            </div>
           </div>
         </div>
-      </div>
   
-      <div className={`w-full max-w-lg px-6 py-4 rounded-lg shadow-lg mt-4 ${problem ? 'bg-gray-900' : ''}`}>
-        {problem && (
-          <div className="w-full mb-4 p-4 rounded-md">
-            <h2 className="text-lg md:text-xl font-semibold mb-6 text-white">{problem}</h2>
-            <ul className="mt-2">
-              {choices.map((choice, index) => (
-                <li key={index} className="mt-2">
-                  <button
-                    onClick={() => handleChoiceSelection(choice)}
-                    className={`w-full px-4 py-2 rounded-sm text-left ${
-                      selectedChoice && selectedChoice.charAt(0) === correctChoice
-                        ? selectedChoice === choice
-                          ? "bg-green-500 text-white font-bold"
-                          : "bg-gray-700 text-white"
-                        : selectedChoice === choice
-                          ? "bg-red-500 text-white font-bold"
-                          : "bg-gray-700 text-white"
-                    } hover:bg-gray-600 transition-colors`}
-                  >
-                    {choice}
-                  </button>
-                </li>
-              ))}
-            </ul>
-            <div className="flex justify-center items-center">
-              <button
-                onClick={generateProblem}
-                className="w-full md:w-60 bg-cyan-600 text-white py-2 rounded-lg hover:bg-cyan-500 transition-colors mt-6 mb-4 h-12 mx-8"
-              >
-                Next
-              </button>
-            </div>
+        <div className={`w-full max-w-lg px-6 py-4 rounded-lg shadow-lg mt-4 ${problem ? 'bg-gray-900' : ''}`}>
+          {problem && (
+            <div className="w-full mb-4 p-4 rounded-md">
+              <h2 className="text-lg md:text-xl font-semibold mb-6 text-white">{problem}</h2>
+              <ul className="mt-2">
+                {choices.map((choice, index) => (
+                  <li key={index} className="mt-2">
+                    <button
+                      onClick={() => handleChoiceSelection(choice)}
+                      className={`w-full px-4 py-2 rounded-sm text-left ${
+                        selectedChoice && selectedChoice.charAt(0) === correctChoice
+                          ? selectedChoice === choice
+                            ? "bg-green-500 text-white font-bold"
+                            : "bg-gray-700 text-white"
+                          : selectedChoice === choice
+                            ? "bg-red-500 text-white font-bold"
+                            : "bg-gray-700 text-white"
+                      } hover:bg-gray-600 transition-colors`}
+                    >
+                      {choice}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex justify-center items-center">
+                <button
+                  onClick={generateProblem}
+                  className="w-full md:w-60 bg-cyan-600 text-white py-2 rounded-lg hover:bg-cyan-500 transition-colors mt-6 mb-4 h-12 mx-8"
+                >
+                  Next
+                </button>
+              </div>
   
-            <div className="flex justify-center">
-              <button
-                onClick={handleOverride}
-                className="w-full md:w-180 text-cyan-500 hover:text-cyan-400 py-2 rounded-lg transition-colors h-4 mx-8"
-              >
-                Override Incorrect Answer
-              </button>
+              <div className="flex justify-center">
+                <button
+                  onClick={handleOverride}
+                  className="w-full md:w-180 text-cyan-500 hover:text-cyan-400 py-2 rounded-lg transition-colors h-4 mx-8"
+                >
+                  Override Incorrect Answer
+                </button>
+              </div>
             </div>
-          </div>
-        )}
-      </div>
-      <h1 className="text-sm md:text-base text-white bg-opacity-50 bg-black p-4 opacity-40 z-40 mt-8 text-center">
-        Donate HERE so I can invest in a better AI model to make better questions
-      </h1>
-    </main>
-  </div>
+          )}
+        </div>
+        <h1 className="text-xs sm:text-sm md:text-base text-white bg-opacity-50 bg-black p-4 opacity-40 z-40 mt-8 text-center">
+          Donate HERE so I can invest in a better AI model to make better questions
+        </h1>
+      </main>
+    </div>
   );
 }
